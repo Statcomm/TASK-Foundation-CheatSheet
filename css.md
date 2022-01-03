@@ -1,4 +1,4 @@
-# JS
+# CSS
 
 ## CSS Basics
 

@@ -2,9 +2,24 @@
 
 ## Main brackets
 
-- `{ }`: is mainly used for `________`
-- `( )`: is mainly used for `________`
-- `[ ]`: is mainly used for `________`
+- `{ }`: aka Braces aka curly braces is mainly used for `grouping statements and declarations. Also the contents of a class/interace are enclosed here. Method and consutrctor bodies are enclosed in here. if statements, loop and control structures like functions are there.`
+- **Basically this is to define a scope**.
+- e.g. of things we have seen so far:
+- function exampleFunction = (empty or where parameters go) => {function statement 1; function statement 2}
+- class ExampleClass {here stick the rest of the code defining your this.keys and optionally your constructor and super if you want to insert parameters externally}
+- if (condition of any kind) = {what will happen if you condition is true} else {what will happen if your condition is false}
+#
+
+- `( )`: aka parentheses are mainly used for `two things: control order of math operations, and supply parameters to a constructor or method`
+- **Basically this is to feed parameters to other stuff**
+- **This also activates functions or methods, to tell it to actually do the stuff** If you don't include these parenthesis 
+- console.log() <= whatever you're going to put in this parenthesis is a parameter.
+
+#
+- `[ ]`: aka square brackets are mainly used for `index into arrays`
+- **This is exclusive to arrays and is only here to index stuff.**
+- e.g. let thisIsAnArray = [itemInIndex0, itemInIndex1]
+- btw you also use the [] when you want to summon a specific item in an index. so Console.log(thisIsAnArray([0])) means you are summoning whatever is in index 0 (the first position of an array).
 
 ## Javascript Basics
 
@@ -23,26 +38,46 @@ comment */
 ```
 
 **Variables and constants**
+
+Let and const allow you to create stuff in Javascript.
+
+
+
 variables -> `let`
-`___`: for variables
-`___`: for constants
+`let`: for variables
+- Variables can be easily changed and revised/redefined later down the code.
+
+`const`: for constants
+- Stuff you create through const can never be revised later. That means you can't manually redefine it.
+- They can still intake parameters (parameters = inputs) for the constant to do something, like a function created through const. 
+- Also one exception: arrays created through const can still have elements pe pushed in or popped out of existence.
 
 ```js
 // to create a new variable
-________;
+let Object = something;
 // to create a new constant
-________;
+const somethingyouneverwantchanged = 5;
 ```
 
 **Main Types:**
 
 ```js
 // Number:
-let a = _____;
+let a = 5;
+
 // String:
-let b = _____;
+let b = "This is quite literally a bunch of text";
+BTW Javascript is so flexible, if you put a number as a 
+string, which is literally text, Javascript can understand it as a number.
+
 // Boolean:
-let c = _____;
+let c = true;
+Booleans come in two type: the literals which are true and false.
+Logical operators. && means AND. || means OR. 
+! means the opposite of. So literally put ! before anything and then JS will interpret it as the opposite.
+!function(parameter) means literally do the opposite of that function with the parameter we put.
+!= means not equal.
+
 ```
 
 **Print**
@@ -50,35 +85,53 @@ To print out on the console
 
 ```js
 // 1. printing string
-______.log(_____Hello World_____); // -> Hello World
+Console.log("Hello World"); // -> Hello World
+BTW console logging only shows the developer the messages. IRL settings, console log will not be shown to users!
+
+The quotations marks "" make stuff be string, as in literal text.
+
+If you didn't put quotation marks, you'd be telling javascript to log something called Hello World that you'd have needed to define before.
+
+You would know it's a function or a method if it was Hello World() because even if the parenthesis is empty, you're telling JS to make something do something.
 
 // 2. printing values inside stored variables or constant
 const pi = 3.14;
-______.log(pi); // 3.14
+console.log(pi); // 3.14
 
 // 3. printing more than one element,
 const x = 5;
 const y = 10;
-______.log(____________________); // 5 Hello World 10
+console.log(x+" Hello World "+y); // 5 Hello World 10
+SYNTAX TIME!
+Plus "+" here means you are combining elements. You are telling javascript "first conosle log x, then console log this string, then console log y. Because x and y are objects, and you are calling the object, rahter than directly what it is manually, you use plsu.
 
 // 4. console.log adds one line after it finishes
-______.log(); // will just print an empty new line
+console.log("\n"); // will just print an empty new line
 ```
 
 ### Basics
 
 #### Strings
 
-Anything in javascript between `" "` or `' '` or back ticks ` `` ` is called a string
+Anything in javascript between `" "` or `' '` or back ticks ` `` ` is called a string.
 Every text should be between quotation marks.
+
+- Choose any but ` ` are typically better because they'll allow certain special stuff to happen within strings that you don't want to be literal text.
+
+**SYNTAX TIME!!**
+- Not everything you put in quotation marks will appear as is. If you are typing string in quotations here are some stuff that won't be interpreted as literal text:
+- \ and a letter. The "\" or backslash is key here.
+- ${ } will make appear something from a code or something else.
+- If you begin and end with a set of quotation marks of your choice, any other types of quotations you choose to put in that same string will be interpreted as that string.
+
 
 **Special Characters**
 
 ```js
-console.log("________"); // prints a new line
-console.log("________"); // prints a tab   space
-console.log("________"); // prints a single back slash \
-console.log("________"); // prints a single quotation mark "
+console.log("your text here and then put... in your quotation\n"); // prints a new line
+console.log("your regular text here and then... \t to tab!"); // prints a tab   space
+console.log("blabla text and then... \\ literally type double backslash since a single backslash is telling JS that even though this is literal text, you want to do some formatting."); // prints a single back slash \
+console.log(`"`); // prints a single quotation mark "
 ```
 
 **String Interpolation**
@@ -87,27 +140,32 @@ To add values inside a string we use the back tics `` `TEXT ${VARIABLE or COMPUT
 ```js
 const x = 1;
 const y = 100;
-console.log(`__________`); // prints: x:1, y:100
-console.log(`__________`); // prints: 101
+console.log(`x:${x}, y:${y}`); // prints: x:1, y:100
+console.log(`${y+x}`); // prints: 101
 ```
 
 **Mathmatical operations**
 
 ```js
 // addition
-10 _ 5
+10 + 5
 
 // subtraction
-10 _ 5
+10 - 5
 
 // multiplication
-10 _ 5
+10 * 5
 
 // division
-10 _ 5
+10 / 5
 
-// remainder: The reminder of the division
-10 _ 5
+// remainder: The remainder of the division
+10 % 5
+PROTIP!!
+Want odds or even?
+
+if x % 2 = 0, that means the number is even
+if X % 2 != 0 that means the number is odd. FYI != means not equal.
 
 ```
 
@@ -117,32 +175,42 @@ console.log(`__________`); // prints: 101
 
 ```js
 // Equals
-"5" __ 5 // returns true
+"5" == 5 // returns true
+SYNTAX TIME!!
+If you had put just one equal symbol, you're telling javascript to define "5" as...5. The same way you'd be telling javascript let cookies = "tasty" or something (but with wrong syntax).
+
+This is why for the math expression of equals when not inside an object already, you want two equal signs.
 
 // Strictly Equals (Better usage: returns true if same value, same type)
-"5" ___ 5 // returns true
+"5" === 5 // returns false
 
 // doesn't equal
-5 __ 5 // returns false
+5 != 5 // returns false
+
+// doesn't strictly equal
+5 !== 5 // returns false
+
 
 // greater than
-10 _ 5 // returns false
+10 > 5 // returns true
 
 // greater than or equal
-10 __ 10 // returns true
+10 >= 10 // returns true
 
 // less than
-10 _ 5 // returns false
+10 < 5 // returns false
 
 // less than or equal
-10 _ 5 // returns false
+10 <= 5 // returns false
 
+SYNTAX TIME!!
+When doing the greater/less or equal stuff, put the symbol first then the equal sign.
 
 // connects 2 booleans, both of them should be true to make the final result true
-10 > 5 __ "Hello" == "Hi" // returns false, because the second one is false
+10 > 5 && "Hello" == "Hi" // returns false, because the second one is false
 
 // connects 2 booleans, one of them should be true to make the final result true
-10 > 5 __ "Hello" == "Hi" // returns true, because the first one is true
+10 > 5 || "Hello" == "Hi" // returns true, because the first one is true
 ```
 
 **If Statement**
@@ -150,23 +218,27 @@ console.log(`__________`); // prints: 101
 ```js
 // The condition inside the () should return either true or false
 const x = 5;
-___(x === 5){
+if (x === 5){
   // statement that will be executed if the condition was true
+  console.log("The if statement returned true!")
 }
+
 
 // You can link the if statement with else to execute if the condition was false
 
 const x = 5;
 if(x!=5){
   // do job 1
+   console.log("The if statement returned true! This was the first job to do assuming the statment was true")
 }
 ____{
   // do job 2
   // This code will only be execute if only the condition inside the if didn't work
   // you don't put a condition after the else statement
+  console.log("The if statement returned false. This was the first job to do assuming the statment was false")
 }
 
-// The if chain, only one of the following jobs will be executed
+// In this if chain, only one of the following jobs will be executed
 if(CONDITION){
   // job 1
 }
@@ -461,3 +533,5 @@ class ClassName {
 class ParentClassName{}
 class ChildClassName _______ ParentClassName{}
 ```
+
+//final advice to myself: create a lexicon and a word pattern recognition for javascript, like primitive types, reference types, what objects are exactly.... Primitive types copy values, but objects do not. Primitive types are immutable, objects will change. All objects are references.
